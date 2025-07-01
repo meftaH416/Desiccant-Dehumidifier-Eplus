@@ -18,10 +18,10 @@ from Temperature. Change Timestep to 1 minute.
 
 ## Creating Desiccant Dehumidifier NoFan in Openstudio in AirLoopHVAC
 
-!! Editing the IDF to add Desiccant Dehumidifiers
-!! Make sure that control variable of Controller:WaterCoil is Temperature. 
+Editing the IDF to add Desiccant Dehumidifiers
+Make sure that control variable of Controller:WaterCoil is Temperature. 
 
-!! 1. Edit Branch of AirLoopHVAC.
+1. Edit Branch of AirLoopHVAC.
 ! -- Add "Dehumidifier:Desiccant:NoFans as components 11.
 ! -- Add "Component 2 Outlet Node" to Desiccant Process Air Inlet Node
 ! -- Add "Process Air Outlet Node" Desiccant object outlet 
@@ -52,7 +52,7 @@ Branch,
     Sup Outlet Node;         !- Component 4 Outlet Node Name
 
 
-!! 2. Desiccant dehumidifier object added
+2. Desiccant dehumidifier object added
 ! -- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"
 
 Dehumidifier:Desiccant:NoFans,
@@ -73,8 +73,7 @@ Dehumidifier:Desiccant:NoFans,
     Desiccant Regen Fan,     !- Regeneration Fan Name
     DEFAULT;                 !- Performance Model Type
 
-
-!! 3. Remove the old OutdoorAir:NodeList and add the following components
+3. Remove the old OutdoorAir:NodeList and add the following components
 ! -- Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
 ! -- Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList
 
@@ -85,9 +84,8 @@ NodeList,
    OutsideAirInletNodes,               !- Name
    OA Inlet Node,                      !- Node 1 Name
    Regeneration Fan Inlet Node;        !- Node 2 Name
-   
-   
-!! 4. Add Heating coil
+      
+4. Add Heating coil
 ! -- Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
 ! -- Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil
 
@@ -100,8 +98,7 @@ Coil:Heating:Fuel,
     Regen Fan Outlet Node,   !- Air Inlet Node Name
     Regen Coil Out Node;     !- Air Outlet Node Name
 
-
-!! 5. Add Fan object 
+5. Add Fan object 
 ! -- Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
 ! -- Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan"
 
@@ -123,13 +120,11 @@ Fan:VariableVolume,
     0,                       !- Fan Power Coefficient 5
     Regeneration Fan Inlet Node,  !- Air Inlet Node Name
     Regen Fan Outlet Node;   !- Air Outlet Node Name
-
 	
-!! 6. Add Avaiabability schedule name 
+6. Add Avaiabability schedule name 
 ! -- The schedule object "Always On" already exists in this IDF.
 
-
-!! 7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
+7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
 
 Coil:Cooling:Water,
     CHW Clg Coil,            !- Name
@@ -148,7 +143,7 @@ Coil:Cooling:Water,
     SimpleAnalysis,          !- Type of Analysis
     CrossFlow;               !- Heat Exchanger Configuration
 
-!! Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
+8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
 ! -- Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
 SetpointManager:SingleZone:Reheat,
     Process Air Outlet Node OS Default SPM,  !- Name
@@ -159,7 +154,6 @@ SetpointManager:SingleZone:Reheat,
     wearhouse_1_a8047464 Zone Air Node,  !- Zone Node Name
     Air Terminal Outlet Node,!- Zone Inlet Node Name
     Process Air Outlet Node;         !- Setpoint Node or NodeList Name
-
 
 
 ## Creating Desiccant Dehumidifier NoFan in Openstudio to OutdoorAirSystem
