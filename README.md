@@ -22,11 +22,11 @@ Editing the IDF to add Desiccant Dehumidifiers
 Make sure that control variable of Controller:WaterCoil is Temperature. 
 
 1. Edit Branch of AirLoopHVAC.
-! -- Add "Dehumidifier:Desiccant:NoFans as components 11.
-! -- Add "Component 2 Outlet Node" to Desiccant Process Air Inlet Node
-! -- Add "Process Air Outlet Node" Desiccant object outlet 
-! -- Add "Process Air Outlet Node" to Component 3 (Coil:Cooling:Water) Inlet Node
-
+- Add "Dehumidifier:Desiccant:NoFans as components 11.
+- Add "Component 2 Outlet Node" to Desiccant Process Air Inlet Node
+- Add "Process Air Outlet Node" Desiccant object outlet 
+- Add "Process Air Outlet Node" to Component 3 (Coil:Cooling:Water) Inlet Node
+<br>
 Branch,
     Air Loop HVAC Main Branch,  !- Name
     ,                        !- Pressure Drop Curve Name
@@ -50,7 +50,7 @@ Branch,
     Gas Htg Coil,            !- Component 4 Name
     Cool Outlet Node,        !- Component 4 Inlet Node Name
     Sup Outlet Node;         !- Component 4 Outlet Node Name
-
+</br>
 
 2. Desiccant dehumidifier object added
 ! -- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"
