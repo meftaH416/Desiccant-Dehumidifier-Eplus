@@ -45,7 +45,7 @@ Branch, <br>
     Gas Htg Coil,            !- Component 4 Name <br>
     Cool Outlet Node,        !- Component 4 Inlet Node Name <br>
     Sup Outlet Node;         !- Component 4 Outlet Node Name <br>
-</br>
+
 ### 2. Desiccant dehumidifier object added
 - Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"  <br>
 Dehumidifier:Desiccant:NoFans, <br>
