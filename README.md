@@ -21,7 +21,7 @@ Make sure that control variable of Controller:WaterCoil is Temperature.
 - Add "Component 2 Outlet Node" to Desiccant Process Air Inlet Node
 - Add "Process Air Outlet Node" Desiccant object outlet 
 - Add "Process Air Outlet Node" to Component 3 (Coil:Cooling:Water) Inlet Node
-<br>
+
 Branch, <br>
     Air Loop HVAC Main Branch,  !- Name  <br>
     ,                        !- Pressure Drop Curve Name <br>
@@ -48,6 +48,7 @@ Branch, <br>
 
 ### 2. Desiccant dehumidifier object added
 - Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"  <br>
+
 Dehumidifier:Desiccant:NoFans, <br>
     Desiccant 1,             !- Name <br>
     Always On,               !- Availability Schedule Name <br>
