@@ -47,106 +47,107 @@ Branch, <br>
     Sup Outlet Node;         !- Component 4 Outlet Node Name <br>
 </br>
 2. Desiccant dehumidifier object added
-- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"
-Dehumidifier:Desiccant:NoFans,
-    Desiccant 1,             !- Name
-    Always On,               !- Availability Schedule Name
-    Cool Inlet Node,           !- Process Air Inlet Node Name
-    Process Air Outlet Node, !- Process Air Outlet Node Name
-    Regen Coil Out Node,     !- Regeneration Air Inlet Node Name
-    Regeneration Fan Inlet Node,  !- Regeneration Fan Inlet Node Name
-    LeavingMaximumHumidityRatioSetpoint,  !- Control Type
-    0.005,                    !- Leaving Maximum Humidity Ratio Setpoint {kgWater/kgDryAir}
-    1.8,                     !- Nominal Process Air Flow Rate {m3/s}
-    2.5,                     !- Nominal Process Air Velocity {m/s}
-    10,                      !- Rotor Power {W}
-    Coil:Heating:Fuel,       !- Regeneration Coil Object Type
-    Desiccant Regen Coil,    !- Regeneration Coil Name
-    Fan:VariableVolume,      !- Regeneration Fan Object Type
-    Desiccant Regen Fan,     !- Regeneration Fan Name
-    DEFAULT;                 !- Performance Model Type
+- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"  <br>
+Dehumidifier:Desiccant:NoFans, <br>
+    Desiccant 1,             !- Name <br>
+    Always On,               !- Availability Schedule Name <br>
+    Cool Inlet Node,           !- Process Air Inlet Node Name <br>
+    Process Air Outlet Node, !- Process Air Outlet Node Name <br>
+    Regen Coil Out Node,     !- Regeneration Air Inlet Node Name <br>
+    Regeneration Fan Inlet Node,  !- Regeneration Fan Inlet Node Name <br>
+    LeavingMaximumHumidityRatioSetpoint,  !- Control Type <br>
+    0.007,                    !- Leaving Maximum Humidity Ratio Setpoint {kgWater/kgDryAir} <br>
+    1.8,                     !- Nominal Process Air Flow Rate {m3/s} <br>
+    2.5,                     !- Nominal Process Air Velocity {m/s} <br>
+    10,                      !- Rotor Power {W} <br>
+    Coil:Heating:Fuel,       !- Regeneration Coil Object Type <br>
+    Desiccant Regen Coil,    !- Regeneration Coil Name <br>
+    Fan:VariableVolume,      !- Regeneration Fan Object Type <br>
+    Desiccant Regen Fan,     !- Regeneration Fan Name <br>
+    DEFAULT;                 !- Performance Model Type <br>
 
 3. Remove the old OutdoorAir:NodeList and add the following components
-! -- Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
-! -- Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList
+- Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
+- Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList <br>
 
-OutdoorAir:NodeList,
-    OutsideAirInletNodes;    !- Node or NodeList Name 1
+OutdoorAir:NodeList, <br>
+    OutsideAirInletNodes;    !- Node or NodeList Name 1 <br>
 
-NodeList,
-   OutsideAirInletNodes,               !- Name
-   OA Inlet Node,                      !- Node 1 Name
-   Regeneration Fan Inlet Node;        !- Node 2 Name
+NodeList, <br>
+   OutsideAirInletNodes,               !- Name <br>
+   OA Inlet Node,                      !- Node 1 Name <br>
+   Regeneration Fan Inlet Node;        !- Node 2 Name <br>
       
 4. Add Heating coil
-! -- Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
-! -- Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil
+- Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
+- Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil <br>
 
-Coil:Heating:Fuel,
-    Desiccant Regen Coil,    !- Name
-    Always On,               !- Availability Schedule Name
-    NaturalGas,              !- Fuel Type
-    0.80,                    !- Burner Efficiency
-    200000,                  !- Nominal Capacity {W}
-    Regen Fan Outlet Node,   !- Air Inlet Node Name
-    Regen Coil Out Node;     !- Air Outlet Node Name
+Coil:Heating:Fuel, <br>
+    Desiccant Regen Coil,    !- Name <br>
+    Always On,               !- Availability Schedule Name <br>
+    NaturalGas,              !- Fuel Type <br>
+    0.80,                    !- Burner Efficiency <br>
+    200000,                  !- Nominal Capacity {W} <br>
+    Regen Fan Outlet Node,   !- Air Inlet Node Name <br>
+    Regen Coil Out Node;     !- Air Outlet Node Name <br>
 
 5. Add Fan object 
-! -- Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
-! -- Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan"
+- Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
+- Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan" <br>
 
-Fan:VariableVolume,
-    Desiccant Regen Fan,     !- Name
-    Always On,               !- Availability Schedule Name
-    0.7,                     !- Fan Total Efficiency
-    700.0,                   !- Pressure Rise {Pa}
-    1.8,                     !- Maximum Flow Rate {m3/s}
-    FixedFlowRate,           !- Fan Power Minimum Flow Rate Input Method
-    ,                        !- Fan Power Minimum Flow Fraction
-    0.0,                     !- Fan Power Minimum Air Flow Rate {m3/s}
-    0.9,                     !- Motor Efficiency
-    1.0,                     !- Motor In Airstream Fraction
-    0,                       !- Fan Power Coefficient 1
-    1,                       !- Fan Power Coefficient 2
-    0,                       !- Fan Power Coefficient 3
-    0,                       !- Fan Power Coefficient 4
-    0,                       !- Fan Power Coefficient 5
-    Regeneration Fan Inlet Node,  !- Air Inlet Node Name
-    Regen Fan Outlet Node;   !- Air Outlet Node Name
+Fan:VariableVolume, <br>
+    Desiccant Regen Fan,     !- Name <br>
+    Always On,               !- Availability Schedule Name <br>
+    0.7,                     !- Fan Total Efficiency <br>
+    700.0,                   !- Pressure Rise {Pa} <br>
+    1.8,                     !- Maximum Flow Rate {m3/s} <br>
+    FixedFlowRate,           !- Fan Power Minimum Flow Rate Input Method <br>
+    ,                        !- Fan Power Minimum Flow Fraction <br>
+    0.0,                     !- Fan Power Minimum Air Flow Rate {m3/s} <br>
+    0.9,                     !- Motor Efficiency <br>
+    1.0,                     !- Motor In Airstream Fraction <br>
+    0,                       !- Fan Power Coefficient 1 <br>
+    1,                       !- Fan Power Coefficient 2 <br>
+    0,                       !- Fan Power Coefficient 3 <br>
+    0,                       !- Fan Power Coefficient 4 <br>
+    0,                       !- Fan Power Coefficient 5 <br>
+    Regeneration Fan Inlet Node,  !- Air Inlet Node Name <br>
+    Regen Fan Outlet Node;   !- Air Outlet Node Name <br>
 	
 6. Add Avaiabability schedule name 
-! -- The schedule object "Always On" already exists in this IDF.
+- The schedule object "Always On" already exists in this IDF.
 
 7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
 
-Coil:Cooling:Water,
-    CHW Clg Coil,            !- Name
-    Always On Discrete hvac_library,  !- Availability Schedule Name
-    Autosize,                !- Design Water Flow Rate {m3/s}
-    Autosize,                !- Design Air Flow Rate {m3/s}
-    Autosize,                !- Design Inlet Water Temperature {C}
-    Autosize,                !- Design Inlet Air Temperature {C}
-    Autosize,                !- Design Outlet Air Temperature {C}
-    Autosize,                !- Design Inlet Air Humidity Ratio {kgWater/kgDryAir}
-    Autosize,                !- Design Outlet Air Humidity Ratio {kgWater/kgDryAir}
-    Cooling Water Inlet Node,!- Water Inlet Node Name
-    Cooling Water Outlet Node,  !- Water Outlet Node Name
-    Process Air Outlet Node,         !- Air Inlet Node Name
-    Cool Outlet Node,        !- Air Outlet Node Name
-    SimpleAnalysis,          !- Type of Analysis
-    CrossFlow;               !- Heat Exchanger Configuration
+Coil:Cooling:Water, <br>
+    CHW Clg Coil,            !- Name <br>
+    Always On Discrete hvac_library,  !- Availability Schedule Name <br>
+    Autosize,                !- Design Water Flow Rate {m3/s} <br>
+    Autosize,                !- Design Air Flow Rate {m3/s} <br>
+    Autosize,                !- Design Inlet Water Temperature {C} <br>
+    Autosize,                !- Design Inlet Air Temperature {C} <br>
+    Autosize,                !- Design Outlet Air Temperature {C} <br>
+    Autosize,                !- Design Inlet Air Humidity Ratio {kgWater/kgDryAir} <br>
+    Autosize,                !- Design Outlet Air Humidity Ratio {kgWater/kgDryAir} <br>
+    Cooling Water Inlet Node,!- Water Inlet Node Name <br>
+    Cooling Water Outlet Node,  !- Water Outlet Node Name <br>
+    Process Air Outlet Node,         !- Air Inlet Node Name <br>
+    Cool Outlet Node,        !- Air Outlet Node Name <br>
+    SimpleAnalysis,          !- Type of Analysis <br>
+    CrossFlow;               !- Heat Exchanger Configuration <br>
 
 8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
-! -- Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
-SetpointManager:SingleZone:Reheat,
-    Process Air Outlet Node OS Default SPM,  !- Name
-    Temperature,             !- Control Variable
-    6,                       !- Minimum Supply Air Temperature {C}
-    82,                      !- Maximum Supply Air Temperature {C}
-    wearhouse,               !- Control Zone Name
-    wearhouse_1_a8047464 Zone Air Node,  !- Zone Node Name
-    Air Terminal Outlet Node,!- Zone Inlet Node Name
-    Process Air Outlet Node;         !- Setpoint Node or NodeList Name
+- Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
+
+SetpointManager:SingleZone:Reheat, <br>
+    Process Air Outlet Node OS Default SPM,  !- Name <br>
+    Temperature,             !- Control Variable <br>
+    6,                       !- Minimum Supply Air Temperature {C} <br>
+    82,                      !- Maximum Supply Air Temperature {C} <br>
+    wearhouse,               !- Control Zone Name <br>
+    wearhouse_1_a8047464 Zone Air Node,  !- Zone Node Name <br>
+    Air Terminal Outlet Node,!- Zone Inlet Node Name <br>
+    Process Air Outlet Node;         !- Setpoint Node or NodeList Name <br>
 
 
 ## Creating Desiccant Dehumidifier NoFan in Openstudio to OutdoorAirSystem
