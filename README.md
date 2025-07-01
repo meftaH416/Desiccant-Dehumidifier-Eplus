@@ -16,7 +16,7 @@ from Temperature. Change Timestep to 1 minute.
 Editing the IDF to add Desiccant Dehumidifiers
 Make sure that control variable of Controller:WaterCoil is Temperature. 
 
-1. Edit Branch of AirLoopHVAC.
+### 1. Edit Branch of AirLoopHVAC.
 - Add "Dehumidifier:Desiccant:NoFans as components 11.
 - Add "Component 2 Outlet Node" to Desiccant Process Air Inlet Node
 - Add "Process Air Outlet Node" Desiccant object outlet 
@@ -46,7 +46,7 @@ Branch, <br>
     Cool Outlet Node,        !- Component 4 Inlet Node Name <br>
     Sup Outlet Node;         !- Component 4 Outlet Node Name <br>
 </br>
-2. Desiccant dehumidifier object added
+### 2. Desiccant dehumidifier object added
 - Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"  <br>
 Dehumidifier:Desiccant:NoFans, <br>
     Desiccant 1,             !- Name <br>
@@ -66,7 +66,7 @@ Dehumidifier:Desiccant:NoFans, <br>
     Desiccant Regen Fan,     !- Regeneration Fan Name <br>
     DEFAULT;                 !- Performance Model Type <br>
 
-3. Remove the old OutdoorAir:NodeList and add the following components
+### 3. Remove the old OutdoorAir:NodeList and add the following components
 - Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
 - Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList <br>
 
@@ -78,7 +78,7 @@ NodeList, <br>
    OA Inlet Node,                      !- Node 1 Name <br>
    Regeneration Fan Inlet Node;        !- Node 2 Name <br>
       
-4. Add Heating coil
+### 4. Add Heating coil
 - Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
 - Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil <br>
 
@@ -91,7 +91,7 @@ Coil:Heating:Fuel, <br>
     Regen Fan Outlet Node,   !- Air Inlet Node Name <br>
     Regen Coil Out Node;     !- Air Outlet Node Name <br>
 
-5. Add Fan object 
+### 5. Add Fan object 
 - Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
 - Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan" <br>
 
@@ -114,10 +114,10 @@ Fan:VariableVolume, <br>
     Regeneration Fan Inlet Node,  !- Air Inlet Node Name <br>
     Regen Fan Outlet Node;   !- Air Outlet Node Name <br>
 	
-6. Add Avaiabability schedule name 
+### 6. Add Avaiabability schedule name 
 - The schedule object "Always On" already exists in this IDF.
 
-7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
+### 7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
 
 Coil:Cooling:Water, <br>
     CHW Clg Coil,            !- Name <br>
@@ -136,7 +136,7 @@ Coil:Cooling:Water, <br>
     SimpleAnalysis,          !- Type of Analysis <br>
     CrossFlow;               !- Heat Exchanger Configuration <br>
 
-8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
+### 8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
 - Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
 
 SetpointManager:SingleZone:Reheat, <br>
