@@ -46,10 +46,8 @@ Branch, <br>
     Cool Outlet Node,        !- Component 4 Inlet Node Name <br>
     Sup Outlet Node;         !- Component 4 Outlet Node Name <br>
 </br>
-
 2. Desiccant dehumidifier object added
-! -- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"
-
+- Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"
 Dehumidifier:Desiccant:NoFans,
     Desiccant 1,             !- Name
     Always On,               !- Availability Schedule Name
