@@ -22,8 +22,8 @@ Make sure that control variable of Controller:WaterCoil is Temperature.
 - Add "Process Air Outlet Node" Desiccant object outlet 
 - Add "Process Air Outlet Node" to Component 3 (Coil:Cooling:Water) Inlet Node
 <br>
-Branch, 
-    Air Loop HVAC Main Branch,  !- Name <br>
+Branch, <br>
+    Air Loop HVAC Main Branch,  !- Name  <br>
     ,                        !- Pressure Drop Curve Name <br>
     AirLoopHVAC:OutdoorAirSystem,  !- Component 1 Object Type <br>
     OA System,               !- Component 1 Name <br>
