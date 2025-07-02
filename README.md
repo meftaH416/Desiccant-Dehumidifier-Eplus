@@ -1,3 +1,4 @@
+<p style="text-align: justify; font-size:18px; color:black; font-weight:normal;>
 ## Creating Dehumidification in Openstudio
 The OSM file name "CDD-watercoil.osm" is created.
 In order to control the Humidity we need to add Coil:Cooling:Water into Air Loop HVAC.
@@ -269,3 +270,5 @@ OutdoorAir:Mixer, <br>
   Heat Recovery Outlet Node,              !- Outdoor Air Stream Node Name <br>
   OA Relief Node,                         !- Relief Air Stream Node Name <br>
   Sup Inlet Node;                         !- Return Air Stream Node Name <br>
+
+</p>
