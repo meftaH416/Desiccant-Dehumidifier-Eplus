@@ -58,8 +58,8 @@ Dehumidifier:Desiccant:NoFans, <br>
     Regen Coil Out Node,     !- Regeneration Air Inlet Node Name <br>
     Regeneration Fan Inlet Node,  !- Regeneration Fan Inlet Node Name <br>
     LeavingMaximumHumidityRatioSetpoint,  !- Control Type <br>
-    0.007,                    !- Leaving Maximum Humidity Ratio Setpoint {kgWater/kgDryAir} <br>
-    1.8,                     !- Nominal Process Air Flow Rate {m3/s} <br>
+    0.0074,                    !- Leaving Maximum Humidity Ratio Setpoint {kgWater/kgDryAir} <br>
+    0.35,                     !- Nominal Process Air Flow Rate {m3/s} <br>
     2.5,                     !- Nominal Process Air Velocity {m/s} <br>
     10,                      !- Rotor Power {W} <br>
     Coil:Heating:Fuel,       !- Regeneration Coil Object Type <br>
@@ -89,7 +89,7 @@ Coil:Heating:Fuel, <br>
     Always On,               !- Availability Schedule Name <br>
     NaturalGas,              !- Fuel Type <br>
     0.80,                    !- Burner Efficiency <br>
-    200000,                  !- Nominal Capacity {W} <br>
+    40000,                  !- Nominal Capacity {W} <br>
     Regen Fan Outlet Node,   !- Air Inlet Node Name <br>
     Regen Coil Out Node;     !- Air Outlet Node Name <br>
 
@@ -102,7 +102,7 @@ Fan:VariableVolume, <br>
     Always On,               !- Availability Schedule Name <br>
     0.7,                     !- Fan Total Efficiency <br>
     700.0,                   !- Pressure Rise {Pa} <br>
-    1.8,                     !- Maximum Flow Rate {m3/s} <br>
+    0.35,                     !- Maximum Flow Rate {m3/s} <br>
     FixedFlowRate,           !- Fan Power Minimum Flow Rate Input Method <br>
     ,                        !- Fan Power Minimum Flow Fraction <br>
     0.0,                     !- Fan Power Minimum Air Flow Rate {m3/s} <br>
