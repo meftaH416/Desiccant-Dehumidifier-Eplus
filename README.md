@@ -49,7 +49,7 @@ Branch,
 </pre>
 ### 2. Desiccant dehumidifier object added
 - Add the "Component 2 Outlet Node" from Branch to "Process Air Inlet Node"  <br>
-
+<pre>
 Dehumidifier:Desiccant:NoFans, <br>
     Desiccant 1,             !- Name <br>
     Always On,               !- Availability Schedule Name <br>
@@ -67,11 +67,11 @@ Dehumidifier:Desiccant:NoFans, <br>
     Fan:VariableVolume,      !- Regeneration Fan Object Type <br>
     Desiccant Regen Fan,     !- Regeneration Fan Name <br>
     DEFAULT;                 !- Performance Model Type <br>
-
+</pre>pre>
 ### 3. Remove the old OutdoorAir:NodeList and add the following components
 - Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
 - Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList <br>
-
+<pre>
 OutdoorAir:NodeList, <br>
     OutsideAirInletNodes;    !- Node or NodeList Name 1 <br>
 
@@ -79,11 +79,11 @@ NodeList, <br>
    OutsideAirInletNodes,               !- Name <br>
    OA Inlet Node,                      !- Node 1 Name <br>
    Regeneration Fan Inlet Node;        !- Node 2 Name <br>
-      
+</pre>pre>    
 ### 4. Add Heating coil
 - Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
 - Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil <br>
-
+<pre>
 Coil:Heating:Fuel, <br>
     Desiccant Regen Coil,    !- Name <br>
     Always On,               !- Availability Schedule Name <br>
@@ -92,11 +92,11 @@ Coil:Heating:Fuel, <br>
     40000,                  !- Nominal Capacity {W} <br>
     Regen Fan Outlet Node,   !- Air Inlet Node Name <br>
     Regen Coil Out Node;     !- Air Outlet Node Name <br>
-
+</pre>pre>
 ### 5. Add Fan object 
 - Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
 - Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan" <br>
-
+<pre>
 Fan:VariableVolume, <br>
     Desiccant Regen Fan,     !- Name <br>
     Always On,               !- Availability Schedule Name <br>
@@ -115,7 +115,7 @@ Fan:VariableVolume, <br>
     0,                       !- Fan Power Coefficient 5 <br>
     Regeneration Fan Inlet Node,  !- Air Inlet Node Name <br>
     Regen Fan Outlet Node;   !- Air Outlet Node Name <br>
-	
+</pre>pre>	
 ### 6. Add Avaiabability schedule name 
 - The schedule object "Always On" already exists in this IDF.
 
@@ -140,7 +140,7 @@ Coil:Cooling:Water, <br>
 </pre>
 ### 8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
 - Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
-
+<pre>
 SetpointManager:SingleZone:Reheat, <br>
     Process Air Outlet Node OS Default SPM,  !- Name <br>
     Temperature,             !- Control Variable <br>
@@ -150,14 +150,14 @@ SetpointManager:SingleZone:Reheat, <br>
     wearhouse_1_a8047464 Zone Air Node,  !- Zone Node Name <br>
     Air Terminal Outlet Node,!- Zone Inlet Node Name <br>
     Process Air Outlet Node;         !- Setpoint Node or NodeList Name <br>
-
+</pre>pre>
 
 ## Creating Desiccant Dehumidifier NoFan in Openstudio to OutdoorAirSystem
 Editing the IDF to add Desiccant Dehumidifiers
 
 1. Edit "AirLoopHVAC:OutdoorAirSystem:EquipmentList".
 - Add "Dehumidifier:Desiccant:NoFans" and "HeatExchanger:AirToAir:FlatPlate" as components
-
+<pre>
 AirLoopHVAC:OutdoorAirSystem:EquipmentList, <br>
   Air Loop HVAC Outdoor Air System 1 Equipment List, !- Name <br>
   Dehumidifier:Desiccant:NoFans,          !- Component 1 Object Type <br>
@@ -166,10 +166,10 @@ AirLoopHVAC:OutdoorAirSystem:EquipmentList, <br>
   OA Heat Recovery 1,                     !- Component 2 Name <br>
   OutdoorAir:Mixer,                       !- Component Object Type 3 <br>
   Air Loop HVAC Outdoor Air System 1 Outdoor Air Mixer; !- Component Name 3 <br>
-
+</pre>pre>
 2. Desiccant dehumidifier object added
 - Add the OutdoorAirSystem Inlet Node as Process Air Inlet Node.
-
+<pre>
 Dehumidifier:Desiccant:NoFans, <br>
   Desiccant 1,                                 !- Name <br>
   Always On Discrete hvac_library,             !- Availability Schedule Name <br>
@@ -187,22 +187,22 @@ Dehumidifier:Desiccant:NoFans, <br>
   Fan:VariableVolume,                          !- Regeneration Fan Object Type <br>
   Desiccant Regen Fan,                         !- Regeneration Fan Name <br>
   DEFAULT;                                     !- Performance Model Type <br>
-
+</pre>pre>
 3. Remove the old OutdoorAir:NodeList and add the following components
 - Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
 - Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList
-
+<pre>
 OutdoorAir:NodeList, <br>
     OutsideAirInletNodes;    !- Node or NodeList Name 1<br>
 NodeList, <br>
    OutsideAirInletNodes,               !- Name <br>
    OA Inlet Node,                      !- Node 1 Name <br>
    Regeneration Fan Inlet Node;        !- Node 2 Name <br>
-   
+</pre>pre>
 4. Add Heating coil
 - Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
 - Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil
-
+<pre>
 Coil:Heating:Fuel, <br>
     Desiccant Regen Coil,    !- Name <br>
     Always On Discrete hvac_library,    !- Availability Schedule Name <br>
@@ -211,11 +211,11 @@ Coil:Heating:Fuel, <br>
     135000,                  !- Nominal Capacity {W} <br>
     Regen Fan Outlet Node,   !- Air Inlet Node Name <br>
     Regen Coil Out Node;     !- Air Outlet Node Name <br>
-
+</pre>
 5. Add Fan object 
 - Add "Regeneration Fan Inlet Node" from Dehumidifier:Desiccant:NoFans to Air Inlet Node
 - Add "Air Inlet Node" from "Desiccant Regen Coil" object to "Air Outlet Node" of "Desiccant Regen Fan"
-
+<pre>
 Fan:VariableVolume, <br>
     Desiccant Regen Fan,     !- Name <br>
     Always On Discrete hvac_library,    !- Availability Schedule Name <br>
@@ -234,13 +234,13 @@ Fan:VariableVolume, <br>
     0,                       !- Fan Power Coefficient 5 <br>
     Regeneration Fan Inlet Node,         !- Air Inlet Node Name <br>
     Regen Fan Outlet Node;   !- Air Outlet Node Name <br>
-
+</pre>
 
 6. Add Heat Exchanger 
 - Add "Process Air Outlet Node" of Dehumidifier:Desiccant:NoFans to "Supply Air Inlet Node" of this object
 - Add "Relief Air Outlet Node" of Controller:OutdoorAir object to "Secondary Air Inlet Node" of this object 
 - Other Node names are user defined. 
-
+<pre>
 HeatExchanger:AirToAir:FlatPlate, <br>
     OA Heat Recovery 1,      !- Name <br>
     Always On Discrete hvac_library,    !- Availability Schedule Name <br>
@@ -257,7 +257,8 @@ HeatExchanger:AirToAir:FlatPlate, <br>
     Heat Recovery Outlet Node,           !- Supply Air Outlet Node Name <br>
     OA Relief Node,          !- Secondary Air Inlet Node Name <br>
     Heat Recovery Secondary Outlet Node;  !- Secondary Air Outlet Node Name <br>	
-	
+</pre>
+
 7. Add Avaiabability schedule name 
 - The schedule object "Always On Discrete hvac_library" already exists in this IDF.
 
