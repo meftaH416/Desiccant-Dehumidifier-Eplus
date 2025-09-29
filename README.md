@@ -168,7 +168,7 @@ AirLoopHVAC:OutdoorAirSystem:EquipmentList,
   OA Heat Recovery 1,                     !- Component 2 Name  
   OutdoorAir:Mixer,                       !- Component Object Type 3  
   Air Loop HVAC Outdoor Air System 1 Outdoor Air Mixer; !- Component Name 3  
-</pre>pre>
+</pre>
 2. Desiccant dehumidifier object added
 - Add the OutdoorAirSystem Inlet Node as Process Air Inlet Node.
 <pre>
