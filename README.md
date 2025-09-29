@@ -120,7 +120,7 @@ Fan:VariableVolume, <br>
 - The schedule object "Always On" already exists in this IDF.
 
 ### 7. Replace "Air Inlet Node" with "Process Air Outlet Node" of Desiccant 
-
+<pre>
 Coil:Cooling:Water, <br>
     CHW Clg Coil,            !- Name <br>
     Always On Discrete hvac_library,  !- Availability Schedule Name <br>
@@ -137,7 +137,7 @@ Coil:Cooling:Water, <br>
     Cool Outlet Node,        !- Air Outlet Node Name <br>
     SimpleAnalysis,          !- Type of Analysis <br>
     CrossFlow;               !- Heat Exchanger Configuration <br>
-
+</pre>
 ### 8. Replace "Setpoint Node or NodeList Name" with "Process Air Outlet Node"
 - Also edited the name to "Process Air Outlet Node OS Default SPM" from "Coil Inlet Node OS Default SPM"
 
