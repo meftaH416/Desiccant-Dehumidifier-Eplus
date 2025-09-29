@@ -1,4 +1,5 @@
 <p style="text-align: justify; font-size:12px; color:black; font-weight:normal;>
+
 ## Creating Dehumidification in Openstudio
 The OSM file name "CDD-watercoil.osm" is created.
 In order to control the Humidity we need to add Coil:Cooling:Water into Air Loop HVAC.
