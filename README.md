@@ -1,7 +1,7 @@
 <!-- <p style="text-align: justify; font-size:12px; color:black; font-weight:normal> -->
 <p>
 
-## Creating Dehumidification in Openstudio
+# Creating Dehumidification in Openstudio
 The OSM file name "CDD-watercoil.osm" is created.
 In order to control the Humidity we need to add Coil:Cooling:Water into Air Loop HVAC.
 The following systems are added in HVAC Tab.
@@ -14,7 +14,7 @@ Add one bypass adiabatic pipe to each of Chiller and Coil.
 4. Take the IDF file created from OSM. Change control variable of Controller:WaterCoil to TemperatureAndHumidity
 from Temperature. Change Timestep to 1 minute. 
 
-## Creating Desiccant Dehumidifier NoFan in Openstudio within AirLoopHVAC system
+## Procedure 1: Creating DesiccantDehumidifierNoFan in Openstudio within AirLoopHVAC system
 
 Editing the IDF to add Desiccant Dehumidifiers
 Make sure that control variable of Controller:WaterCoil is Temperature. 
@@ -154,7 +154,7 @@ SetpointManager:SingleZone:Reheat,
     Process Air Outlet Node;         !- Setpoint Node or NodeList Name  
 </pre>
 
-## Creating Desiccant Dehumidifier NoFan in Openstudio to OutdoorAirSystem
+## Procedure 2: Creating DesiccantDehumidifierNoFan in Openstudio within OutdoorAirSystem
 Editing the IDF to add Desiccant Dehumidifiers
 
 1. Edit "AirLoopHVAC:OutdoorAirSystem:EquipmentList".
