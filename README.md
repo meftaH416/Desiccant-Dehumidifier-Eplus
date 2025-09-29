@@ -115,7 +115,7 @@ Fan:VariableVolume,
     0,                       !- Fan Power Coefficient 5  
     Regeneration Fan Inlet Node,  !- Air Inlet Node Name  
     Regen Fan Outlet Node;   !- Air Outlet Node Name  
-</pre>pre>	
+</pre>
 ### 6. Add Avaiabability schedule name 
 - The schedule object "Always On" already exists in this IDF.
 
@@ -150,7 +150,7 @@ SetpointManager:SingleZone:Reheat,
     wearhouse_1_a8047464 Zone Air Node,  !- Zone Node Name  
     Air Terminal Outlet Node,!- Zone Inlet Node Name  
     Process Air Outlet Node;         !- Setpoint Node or NodeList Name  
-</pre>pre>
+</pre>
 
 ## Creating Desiccant Dehumidifier NoFan in Openstudio to OutdoorAirSystem
 Editing the IDF to add Desiccant Dehumidifiers
@@ -187,7 +187,7 @@ Dehumidifier:Desiccant:NoFans,
   Fan:VariableVolume,                          !- Regeneration Fan Object Type  
   Desiccant Regen Fan,                         !- Regeneration Fan Name  
   DEFAULT;                                     !- Performance Model Type  
-</pre>pre>
+</pre>
 3. Remove the old OutdoorAir:NodeList and add the following components
 - Create new OutdoorAir:NodeList with name OutsideAirInletNodes (user defined name)
 - Add "Process Air Inlet Node Name" and "Regeneration Fan Inlet Node Name" to this NodeList
@@ -198,7 +198,7 @@ NodeList,
    OutsideAirInletNodes,               !- Name  
    OA Inlet Node,                      !- Node 1 Name  
    Regeneration Fan Inlet Node;        !- Node 2 Name  
-</pre>pre>
+</pre>
 4. Add Heating coil
 - Add "Air Outlet Node" of the "Desiccant Regen Fan" (Fan:VariableVolume) "Air Inlet Node" to this heating coil.  
 - Add "Process Air Outlet Node" of Dehumidifier:Desiccant as "Air Outlet Node" to heating coil
@@ -264,12 +264,12 @@ HeatExchanger:AirToAir:FlatPlate,
 
 8. Edit OutdoorAir:Mixer object
 - Replace "Outdoor Air Stream Node" with "Supply Air Outlet Node" of HeatExchanger:AirToAir:FlatPlate object
-
+<pre>
 OutdoorAir:Mixer,  
   Air Loop HVAC Outdoor Air System 1 Outdoor Air Mixer, !- Name  
   Mixed Air Node,                         !- Mixed Air Node Name  
   Heat Recovery Outlet Node,              !- Outdoor Air Stream Node Name  
   OA Relief Node,                         !- Relief Air Stream Node Name  
   Sup Inlet Node;                         !- Return Air Stream Node Name  
-
+</pre>
 </p>
