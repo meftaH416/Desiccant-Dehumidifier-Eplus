@@ -12,7 +12,7 @@ Add one bypass adiabatic pipe to each of Chiller and Coil.
 4. Take the IDF file created from OSM. Change control variable of Controller:WaterCoil to TemperatureAndHumidity
 from Temperature. Change Timestep to 1 minute. 
 
-## Creating Desiccant Dehumidifier NoFan in Openstudio in AirLoopHVAC
+## Creating Desiccant Dehumidifier NoFan in Openstudio within AirLoopHVAC system
 
 Editing the IDF to add Desiccant Dehumidifiers
 Make sure that control variable of Controller:WaterCoil is Temperature. 
