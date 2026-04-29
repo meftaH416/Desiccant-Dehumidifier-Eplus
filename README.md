@@ -5,7 +5,7 @@
 The OSM file name "CDD-watercoil.osm" is created.
 In order to control the Humidity we need to add Coil:Cooling:Water into Air Loop HVAC.
 The following systems are added in HVAC Tab.
-1. An empty air loop with Fan, Coil:Cooling:Water, Gast Heating Coil along with SetPointManager:SingleZone:Reheat.
+1. An empty air loop with Fan, Coil:Cooling:Water, Gas Heating Coil along with SetPointManager:SingleZone:Reheat.
 Add Air Terminal with Reheat Electricity. Add SetPointManager:SingleZone:Humidity:Maximum to outlet node of
 cooling water coil.
 2. A plant Loop with Pump, Chiller Electric, Set Point Manager Schedule, and the same Coil:Cooling:Water.
